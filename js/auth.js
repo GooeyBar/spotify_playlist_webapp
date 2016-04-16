@@ -75,8 +75,24 @@ function go() {
 function createPlaylistLink(text) {
 	// parse text into list of user names
 	var users = text.split(",");
-	users = users.map(Function.prototype.call, String.prototype.trim)
+	users = users.map(Function.prototype.call, String.prototype.trim);
 	console.log(users);
+	
+	//https://api.spotify.com/v1/me/top/{type}
+	
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=medium_term";
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			console.log(xmlhttp.responseText);
+		}
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	
+	
+	
 }
 
 
