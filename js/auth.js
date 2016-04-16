@@ -66,11 +66,19 @@ function go() {
         $(".keywords").text(text);
         $(".results").hide();
         $("#playlist-link").show();
-        findMatchingPlaylists(text);
+        createPlaylistLink(text);
     } else {
         info("Enter some users first");
     }
 }
+
+function createPlaylistLink(text) {
+	// parse text into list of user names
+	var users = text.split(",");
+	users.map(function(s) { return s.trim() });
+	console.log(users);
+}
+
 
 function initApp() {
     $(".intro-form").hide();
