@@ -34,6 +34,7 @@ function callSpotify(url, data) {
 }
 
 function postSpotify(url, json, callback) {
+	console.log(credentials.token);
     $.ajax(url, {
         type: "POST",
         data: JSON.stringify(json),
