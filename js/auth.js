@@ -65,7 +65,7 @@ function go() {
         info("");
         $(".keywords").text(text);
         $(".results").hide();
-        $("#playlist").show();
+        $("#playlist-link").show();
         findMatchingPlaylists(text);
     } else {
         info("Enter some users first");
