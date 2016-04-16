@@ -75,7 +75,7 @@ function go() {
 function createPlaylistLink(text) {
 	// parse text into list of user names
 	var users = text.split(",");
-	users.map(function(s) { return s.trim() });
+	users.map(function(s) { return s.trim(); });
 	console.log(users);
 }
 
