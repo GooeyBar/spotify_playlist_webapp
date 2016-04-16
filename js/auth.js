@@ -105,6 +105,7 @@ function createPlaylistLink(text) {
 		} else {
 			error("Didn't work");
 		}
+	}
 	
 	
 	
