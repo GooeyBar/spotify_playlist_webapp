@@ -60,7 +60,8 @@ function postSpotify(url, json, callback) {
 
 function getSpotify(url, callback) {
     var xmlhttp = new XMLHttpRequest();
-	var url = url;
+	
+	xmlhttp.open("GET", url, true);
 	
 	xmlhttp.setRequestHeader("Authorization", "Bearer " + credentials.token);
 	
@@ -72,7 +73,7 @@ function getSpotify(url, callback) {
 			callback(xml.readyState, null);
 		}
 	};
-	xmlhttp.open("GET", url, true);
+	
 	xmlhttp.send();
 }
 
