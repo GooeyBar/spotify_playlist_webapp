@@ -180,7 +180,7 @@ function loginWithSpotify() {
     //}
 
     var url = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
-        '&response_type=token' +
+        '&response_type=code' +
         '&scope=' + encodeURIComponent(scopes) +
         '&redirect_uri=' + encodeURIComponent(redirect_uri);
     document.location = url;
