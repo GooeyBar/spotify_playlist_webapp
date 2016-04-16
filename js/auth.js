@@ -58,6 +58,24 @@ function postSpotify(url, json, callback) {
     });
 }
 
+function getSpotify(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+	var url = url;
+	
+	xmlhttp.setRequestHeader("Authorization", "Bearer " + credentials.token);
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			console.log(xmlhttp.responseText);
+			callback(xml.readyState, xmlhttp.responseText);
+		} else {
+			callback(xml.readyState, null);
+		}
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+}
+
 function go() {
     $("#top").hide(200);
     var text = $("#playlist-terms").val()
@@ -79,17 +97,14 @@ function createPlaylistLink(text) {
 	console.log(users);
 	
 	//https://api.spotify.com/v1/me/top/{type}
-	
-	var xmlhttp = new XMLHttpRequest();
 	var url = "https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=medium_term";
 	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			console.log(xmlhttp.responseText);
+	getSpotify(url, function(ok, data) {
+		if (ok) {
+			console.log(data);
+		} else {
+			error("Didn't work");
 		}
-	};
-	xmlhttp.open("GET", url, true);
-	xmlhttp.send();
 	
 	
 	
