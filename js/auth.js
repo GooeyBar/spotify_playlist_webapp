@@ -58,8 +58,28 @@ function postSpotify(url, json, callback) {
     });
 }
 
-function getSpotify(url, callback) {
-    var xmlhttp = new XMLHttpRequest();
+function getSpotify(url, data, callback) {
+	$.ajax(url, {
+        type: "GET",
+        data: data,
+        headers: {
+            'Authorization': 'Bearer ' + credentials.token,
+        },
+        success: function(r) {
+            callback(true, r);
+        },
+        error: function(r) {
+            // 2XX status codes are good, but some have no
+            // response data which triggers the error handler
+            // convert it to goodness.
+            if (r.status >= 200 && r.status < 300) {
+                callback(true, r);
+            } else {
+                callback(false, r);
+            }
+        }
+    });
+    /*var xmlhttp = new XMLHttpRequest();
 	
 	xmlhttp.open("GET", url, true);
 	
@@ -68,13 +88,13 @@ function getSpotify(url, callback) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			console.log(xmlhttp.responseText);
-			callback(xml.readyState, xmlhttp.responseText);
+			callback(xmlhttp.readyState, xmlhttp.responseText);
 		} else {
-			callback(xml.readyState, null);
+			callback(xmlhttp.readyState, null);
 		}
 	};
 	
-	xmlhttp.send();
+	xmlhttp.send();*/
 }
 
 function go() {
