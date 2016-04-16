@@ -58,7 +58,7 @@ function postSpotify(url, json, callback) {
     });
 }
 
-function getSpotify(url, data, callback) {
+function getSpotify(url, callback, data) {
 	$.ajax(url, {
         type: "GET",
         data: data,
