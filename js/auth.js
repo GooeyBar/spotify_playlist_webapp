@@ -173,7 +173,7 @@ function initApp() {
 function loginWithSpotify() {
     var client_id = '67b42727bf66410aace5a6becef09d63';
     var redirect_uri = 'https://intense-tundra-77818.herokuapp.com/home.html';
-    var scopes = 'playlist-modify-public';
+    var scopes = 'playlist-modify-public user-top-read';
 
     //if (document.location.hostname == 'localhost') {
     //    redirect_uri = 'http://localhost:8000/index.html';
