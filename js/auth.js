@@ -129,6 +129,17 @@ function createPlaylistLink(text) {
 		}
 	});
 	
+	url = "https://api.spotify.com/v1/users/dtsioni/top/tracks?limit=50&time_range=medium_term";
+	
+	getSpotify(url, function(ok, data) {
+		if (ok) {
+			console.log(data);
+		} else {
+			error("Didn't work");
+		}
+	});
+	
+	
 	
 	
 }
